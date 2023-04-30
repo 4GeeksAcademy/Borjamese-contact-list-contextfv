@@ -5,13 +5,16 @@ import './App.css';
 import Profile from './components/profile';
 import UserList from './components/usersList';
 
+//CONTEXT
+import UserState from './context/User/UserState';
+
 
 function App() {
   return (
-    <div>
+    <UserState>
       <Profile />
       <UserList />
-    </div>
+    </UserState>
   );
 }
 

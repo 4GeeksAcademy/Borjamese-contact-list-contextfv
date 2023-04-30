@@ -13,10 +13,14 @@ const UserState = (props) => {
 
     const getUsers = async () => {
         //es asincrona
-        await axios.get('')
+        const res = await axios.get('https://reqres.in/api/users')
+        console.log(res.data.data)
     }
 
-    const getProfile = () => { }
+    const getProfile = async (id) => {
+        const res = await axios.get('https://reqres.in/api/users' + id)
+        console.log(res)
+    }
 
     return (
         <UserContext.Provider value={{
