@@ -15,11 +15,18 @@ const UserState = (props) => {
         //es asincrona
         const res = await axios.get('https://reqres.in/api/users')
         console.log(res.data.data)
+        dispatch({
+            type: 'GET_USERS',
+            payload: res.data.data
+        })
     }
 
     const getProfile = async (id) => {
         const res = await axios.get('https://reqres.in/api/users' + id)
-        console.log(res)
+        dispatch({
+            type: "GET_PROFILE",
+            payload: res.data
+        })
     }
 
     return (
@@ -27,7 +34,7 @@ const UserState = (props) => {
             users: state.users,
             selectedUser: state.selectedUser,
             getUsers,
-            getProfile
+            getProfile,
         }}>
             {props.children}
         </UserContext.Provider>
