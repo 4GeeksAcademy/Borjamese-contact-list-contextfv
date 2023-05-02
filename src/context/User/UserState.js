@@ -11,6 +11,7 @@ const UserState = (props) => {
 
     const [state, dispatch] = useReducer(UserReducer, initialState)
 
+
     const getUsers = async () => {
         //es asincrona
         const res = await axios.get('https://reqres.in/api/users')
@@ -22,10 +23,11 @@ const UserState = (props) => {
     }
 
     const getProfile = async (id) => {
-        const res = await axios.get('https://reqres.in/api/users' + id)
+        const res = await axios.get('https://reqres.in/api/users/' + id)
+        const { data } = res;
         dispatch({
             type: "GET_PROFILE",
-            payload: res.data
+            payload: data.data
         })
     }
 
@@ -35,6 +37,7 @@ const UserState = (props) => {
             selectedUser: state.selectedUser,
             getUsers,
             getProfile,
+
         }}>
             {props.children}
         </UserContext.Provider>

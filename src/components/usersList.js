@@ -20,6 +20,8 @@ const UserList = () => {
                         <img src={user.avatar} className="img-fluid mr-5 rounded-circle" width="70" />
                         <div>
                             {user && user.first_name && <p>{user.first_name + " " + user.last_name}</p>}
+                            <button> Delete </button>
+
                         </div>
                     </a>
                 ))
