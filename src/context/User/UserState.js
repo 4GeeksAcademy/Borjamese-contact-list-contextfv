@@ -14,22 +14,26 @@ const UserState = (props) => {
 
     const getUsers = async () => {
         //es asincrona
-        const res = await axios.get('https://reqres.in/api/users')
-        console.log(res.data.data)
+        const res = await axios.get('https://assets.breatheco.de/apis/fake/contact/agenda/borjamese-agenda')
+
         dispatch({
             type: 'GET_USERS',
-            payload: res.data.data
+            payload: res.data
         })
     }
 
     const getProfile = async (id) => {
-        const res = await axios.get('https://reqres.in/api/users/' + id)
+        const res = await axios.get("https://assets.breatheco.de/apis/fake/contact/" + id);
         const { data } = res;
+        console.log(res)
         dispatch({
             type: "GET_PROFILE",
-            payload: data.data
-        })
-    }
+            payload: data
+        });
+    };
+
+
+    console.log(state.selectedUser);
 
     return (
         <UserContext.Provider value={{
@@ -43,5 +47,6 @@ const UserState = (props) => {
         </UserContext.Provider>
     )
 }
+
 
 export default UserState
