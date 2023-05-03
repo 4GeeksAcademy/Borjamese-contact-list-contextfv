@@ -24,7 +24,7 @@ const UserState = (props) => {
 
     const getProfile = async (id) => {
         const res = await axios.get("https://assets.breatheco.de/apis/fake/contact/" + id);
-        const { data } = res;
+        const { data } = res
         console.log(res)
         dispatch({
             type: "GET_PROFILE",
