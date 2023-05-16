@@ -20,14 +20,21 @@ export default function (state, action) {
          ...state,
         users: state.users.filter((user) => user.id !== action.payload)
       };
-      
-      case 'UPDATE_USER':
-      return {
-        ...state,
-        users: state.users.map((user) =>
-          user.id === action.payload.id ? action.payload.updatedUser : user
-        ),
-      };
+
+      case "UPDATE_USER":
+  const updatedUser = action.payload;
+  const updatedUsers = state.users.map(user => {
+    if (user.id === updatedUser.id) {
+      return updatedUser;
+    } else {
+      return user;
+    }
+  });
+  return {
+    ...state,
+    users: updatedUsers
+  };
+
         default:
             return state;
     }

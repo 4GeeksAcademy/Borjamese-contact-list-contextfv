@@ -1,9 +1,15 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import UserContext from "../context/User/userContext";
 import imghombre from "../img/imghombre.jpg";
 
 const UserList = () => {
   const { users, getUsers, getProfile, deleteUser } = useContext(UserContext);
+  const [selectedUser, setSelectedUser] = useState(null);
+
+  const handleEdit = (user) => {
+    setSelectedUser(user);
+  };
+
 
   useEffect(() => {
     getUsers();
@@ -30,12 +36,14 @@ const handleClick = (id) => {
           <div>
             <p>{user.full_name}</p>
             <button onClick={() => handleDelete(user.id)}>Delete</button>
-            <button>Edit</button>
+            <button onClick={() => handleEdit(user)}>Edit</button>
           </div>
         </div>
       ))}
     </div>
   );
+
+  
 };
 
 export default UserList;

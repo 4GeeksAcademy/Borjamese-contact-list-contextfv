@@ -53,25 +53,21 @@ const UserState = (props) => {
     }
   };
 
-  const updateUser = async (id, updatedUserData) => {
+  const updateUser = async (id, updatedUser) => {
     try {
       const res = await axios.put(
         `https://assets.breatheco.de/apis/fake/contact/${id}`,
-        updatedUserData
+        updatedUser
       );
-      const updatedUser = res.data;
-
       dispatch({
-        type: 'UPDATE_USER',
-        payload: {
-          id,
-          updatedUser,
-        },
+        type: "UPDATE_USER",
+        payload: res.data
       });
     } catch (error) {
       console.error(error);
     }
   };
+  
 
   return (
     <UserContext.Provider value={{
