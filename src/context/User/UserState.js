@@ -38,15 +38,7 @@ const UserState = (props) => {
     }
   };
 
-    const getProfile = async (id) => {
-        const res = await axios.get("https://assets.breatheco.de/apis/fake/contact/" + id);
-        const { data } = res
-        console.log(res)
-        dispatch({
-            type: "GET_PROFILE",
-            payload: data
-        });
-    };
+  
   const deleteUser = async (id) => {
     try {
       await axios.delete(
