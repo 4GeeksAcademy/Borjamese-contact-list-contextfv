@@ -14,7 +14,6 @@ const UserState = (props) => {
   const getUsers = async () => {
     try {
       const res = await axios.get('https://assets.breatheco.de/apis/fake/contact/agenda/borjamese-agenda')
-
       dispatch({
         type: 'GET_USERS',
         payload: res.data
